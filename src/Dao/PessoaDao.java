@@ -28,9 +28,9 @@ public class PessoaDao {
             try{
                 FileInputStream inputStream = new FileInputStream(arquivo);
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                Set<Pessoa> supermercados =
+                Set<Pessoa> listaPessoas =
                         (Set<Pessoa>) objectInputStream.readObject();
-                return supermercados;
+                return listaPessoas;
             } catch (FileNotFoundException e) {
                 System.out.println("Arquivo não encontrado");
             } catch (IOException e) {
@@ -43,13 +43,13 @@ public class PessoaDao {
         return new HashSet<>();
     }
 
-    public boolean escrever(Pessoa supermercado) {
-        Set<Pessoa> supermercados = getPessoas();
-        if(supermercados.add(supermercado)){
+    public boolean escrever(Pessoa pessoa) {
+        Set<Pessoa> listaPessoas = getPessoas();
+        if(listaPessoas.add(pessoa)){
             try{
                 FileOutputStream outputStream = new FileOutputStream(arquivo);
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-                objectOutputStream.writeObject(supermercados);
+                objectOutputStream.writeObject(listaPessoas);
                 return true;
             } catch (FileNotFoundException e) {
                 System.out.println("Arquivo não encontrado");
@@ -60,11 +60,11 @@ public class PessoaDao {
         return false;
     }
 
-    public boolean salvar(Set<Pessoa> supermercados) {
+    public boolean salvar(Set<Pessoa> pessoas) {
         try{
             FileOutputStream outputStream = new FileOutputStream(arquivo);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(supermercados);
+            objectOutputStream.writeObject(pessoas);
             return true;
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado");

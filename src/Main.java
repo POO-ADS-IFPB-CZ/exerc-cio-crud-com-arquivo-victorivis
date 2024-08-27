@@ -49,7 +49,7 @@ public class Main {
                 System.out.printf("Digite o nome: ");
                 nome = input.next();
 
-                if(rw.apagarPorEmail(nome)){
+                if(rw.apagarPorNome(nome)){
                     System.out.println("Pessoa deletada com sucesso");
                 }
                 else{
